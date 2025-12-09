@@ -12,7 +12,7 @@ $genero_usuario = $_SESSION['genero_usuario'];
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br"  data-tema="escuro">
+<html lang="pt-br" data-tema="escuro">
 
 <head>
     <meta charset="UTF-8">
@@ -20,11 +20,12 @@ $genero_usuario = $_SESSION['genero_usuario'];
     <title>DownSide</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <?php include'php/componentes/nav.php'; ?>
+    <?php include 'php/componentes/nav.php'; ?>
     <main class="container-principal">
         <section class="sec-header">
             <div class="sec-header-avatar">
@@ -41,11 +42,14 @@ $genero_usuario = $_SESSION['genero_usuario'];
                             ?> A nossa plataforma.</h4>
             </header>
         </section>
+        <header>
+            <h2>Resumo</h2>
+        </header>
         <section class="sec-dashboard">
             <div class="caixa">
                 <div class="caixa-header">
                     <p>Qntd Planilhas</p>
-                            
+
                 </div>
                 <div class="caixa-num">
                     2
@@ -63,14 +67,15 @@ $genero_usuario = $_SESSION['genero_usuario'];
             <div class="caixa">
                 <div class="caixa-header">
                     <p>Arquivos Excluidos</p>
-                    
+
                 </div>
                 <div class="caixa-num">
                     1
                 </div>
             </div>
         </section>
-        <button onclick="window.location.href='php/actions/logout.php'">aa</button>
     </main>
+    <script src="scripts/script.js" defer></script>
 </body>
+
 </html>
