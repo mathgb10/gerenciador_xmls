@@ -203,7 +203,8 @@ select {
 
 /* Caixa principal */
 .modal-conteudo {
-    width: 430px;
+    width: 520px;
+    height: auto;
     background: var(--corFundo);
     border: 2px solid var(--corFundo2);
     box-shadow: var(--sombra);

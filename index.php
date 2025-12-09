@@ -12,43 +12,22 @@
 
 <body>
     <main class="container-login">
-        <form action="" method="POST" class="caixa-form">
+        <form action="php/actions/login.php" method="POST" class="caixa-form">
             <header>
                 <h1>Login</h1>
             </header>
             <div class="caixas">
                 <?php
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    require_once "php/conexao.php";
+                session_start();
+                if (isset($_SESSION['erro'])) {
+                    echo "<div class='erro'><p>{$_SESSION['erro']}</p></div>";
+                    unset($_SESSION['erro']);
+                }
 
-                    $nome = $_POST['nome_usuario'];
-                    $senha = $_POST['senha_usuario'];
-
-                    $select = $con->prepare("SELECT * FROM usuarios WHERE nome_usuario = ?");
-                    $select->bind_param('s', $nome);
-                    $select->execute();
-                    $resultado = $select->get_result();
-
-                    if (mysqli_num_rows($resultado) == 1) {
-                        $transformado = $resultado->fetch_assoc();
-                        $nome_usuario = $transformado['nome_usuario'];
-                        $senha_usuario_db = $transformado['senha_usuario'];
-
-                        if (password_verify($senha, $senha_usuario_db)) {
-
-                            session_start();
-                            $_SESSION['nome_usuario'] = $transformado['nome_usuario'];
-                            $_SESSION['genero_usuario'] = $transformado['genero_usuario'];
-                            $_SESSION['permissao_usuario'] = $transformado['permissao_usuario'];
-
-                            echo "<div class='sucesso'><p>Sucesso!</p></div>";
-                            echo "<script>setTimeout( ()=> { window.location.href='dashboard.php'; }, 300)</script>";
-                        } else {
-                            echo "<div class='erro'><p>Senha Incorreta!</p></div>";
-                        }
-                    } else {
-                        echo "<div class='erro'><p>Usuário Não Encontrado!</p></div>";
-                    }
+                if (isset($_SESSION['sucesso'])) {
+                    echo "<div class='sucesso'><p>{$_SESSION['sucesso']}</p></div>";
+                    unset($_SESSION['sucesso']);
+                    echo "<script>setTimeout(()=>{ window.location.href='dashboard.php'; }, 300);</script>";
                 }
                 ?>
                 <div class="caixa-input">
@@ -72,29 +51,32 @@
         <!-- MODAL REGISTRO -->
         <div class="modal-base" id="modal-registro">
             <div class="modal-conteudo">
-                <header class="modal-header">
-                    <h2>Registrar-se</h2>
-                    <button class="btn-fechar" onclick="document.getElementById('modal-registro').style.display='none'">&times;</button>
-                </header>
+                <form action="" method="POST">
+                    <header class="modal-header">
+                        <h2>Registrar-se</h2>
+                        <button class="btn-fechar" type="button" onclick="document.getElementById('modal-registro').style.display='none'">&times;</button>
+                    </header>
 
-                <div class="modal-caixas">
-                    <div class="caixa-input">
-                        <i class="bi bi-person"></i>
-                        <input type="text" placeholder="Nome de Usuário">
+                    <div class="modal-caixas">
+
+                        <div class="caixa-input">
+                            <i class="bi bi-person"></i>
+                            <input type="text" placeholder="Nome de Usuário">
+                        </div>
+
+                        <div class="caixa-input">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" placeholder="E-mail">
+                        </div>
+
+                        <div class="caixa-input">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" placeholder="Senha">
+                        </div>
+
+                        <button class="modal-btn">Cadastrar</button>
                     </div>
-
-                    <div class="caixa-input">
-                        <i class="bi bi-envelope"></i>
-                        <input type="email" placeholder="E-mail">
-                    </div>
-
-                    <div class="caixa-input">
-                        <i class="bi bi-lock"></i>
-                        <input type="password" placeholder="Senha">
-                    </div>
-
-                    <button class="modal-btn">Cadastrar</button>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -103,7 +85,7 @@
             <div class="modal-conteudo">
                 <header class="modal-header">
                     <h2>Recuperar Senha</h2>
-                    <button class="btn-fechar" onclick="document.getElementById('modal-senha').style.display='none'">&times;</button>
+                    <button class="btn-fechar" type="button" onclick="document.getElementById('modal-senha').style.display='none'">&times;</button>
                 </header>
 
                 <div class="modal-caixas">

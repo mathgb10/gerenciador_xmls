@@ -70,6 +70,7 @@ $genero_usuario = $_SESSION['genero_usuario'];
                 </div>
             </div>
         </section>
+        <button onclick="window.location.href='php/actions/logout.php'">aa</button>
     </main>
 </body>
 </html>
