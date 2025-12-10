@@ -58,7 +58,7 @@ html[data-tema='claro'] {
   gap: 50px;
 }
 
-.sec-header-infos{
+.sec-header-infos {
   margin-right: auto;
 }
 
@@ -91,10 +91,12 @@ html[data-tema='claro'] {
   font-size: 25px;
   font-weight: bold;
   animation: avatar infinite 5s ease-in-out;
-  &:hover{
-    background: linear-gradient(90deg, var(--corFundo2)0%,var(--corFundo2)100%);
+
+  &:hover {
+    background: linear-gradient(90deg, var(--corFundo2)0%, var(--corFundo2)100%);
     color: var(--corTxt);
   }
+
   /* rotate: 45deg; */
 }
 
@@ -144,8 +146,9 @@ header {
   align-items: flex-start;
   border-radius: 15px;
   border-bottom: 4px solid var(--corDestaque);
-  &:hover{
+
+  &:hover {
     box-shadow: var(--sombra);
-    top: 5px;
+    transform: translate(-5px, 5px);
   }
 }

@@ -8,7 +8,7 @@
     <div class="nav-items">
         <a href="dashboard.php" class="<?php if($pagina == 'dashboard.php') echo "ativo" ?>"><i class="bi bi-house-door-fill"></i> Home</a>
         <a href="arquivos.php" class="<?php if($pagina == 'arquivos.php') echo "ativo" ?>"><i class="bi bi-file-earmark-fill"></i>Arquivos</a>
-        <a href="relatorios.php" class="<?php if($pagina == 'relatorios.php') echo "ativo" ?>">Gerar Relátorio</a>
+        <a href="relatorios.php" class="<?php if($pagina == 'relatorios.php') echo "ativo" ?>"><i class="bi bi-file-earmark-bar-graph"></i>Gerar Relátorio</a>
     </div>
     <div class="nav-footer">
         <button onclick="mudarTema()" id="tema"><i class="bi bi-moon-stars-fill"></i></button>

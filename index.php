@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br" data-tema="escuro">
 
@@ -20,7 +23,6 @@
             </header>
             <div class="caixas">
                 <?php
-                session_start();
                 if (isset($_SESSION['erro'])) {
                     echo "<div class='erro'><p>{$_SESSION['erro']}</p></div>";
                     unset($_SESSION['erro']);
@@ -34,12 +36,12 @@
                 ?>
                 <div class="caixa-input">
                     <i class="bi bi-person-circle"></i>
-                    <input type="text" name="nome_usuario" placeholder="Nome de Usuário">
+                    <input type="text" name="nome_usuario" placeholder="Nome de Usuário" required>
                     </fieldset>
                 </div>
                 <div class="caixa-input">
                     <i class="bi bi-lock"></i>
-                    <input type="password" name="senha_usuario" placeholder="******" minlength="6">
+                    <input type="password" name="senha_usuario" placeholder="******" minlength="6" required>
                     </fieldset>
                 </div>
             </div>
@@ -51,29 +53,44 @@
         </form>
 
         <!-- MODAL REGISTRO -->
-        <div class="modal-base" id="modal-registro">
+        <div class="modal-base" id="modal-registro" <?php if (isset($_SESSION['erro_reg']) || isset($_SESSION['sucesso_reg'])) echo 'style="display:flex;"'; ?>>
             <div class="modal-conteudo">
-                <form action="" method="POST">
+                <form action="php/actions/register.php" method="POST">
                     <header class="modal-header">
                         <h2>Registrar-se</h2>
                         <button class="btn-fechar" type="button" onclick="document.getElementById('modal-registro').style.display='none'">&times;</button>
                     </header>
 
                     <div class="modal-caixas">
+                        <?php
+                        if (isset($_SESSION['erro_reg'])) {
+                            echo "<div class='erro'><p>{$_SESSION['erro_reg']}</p></div>";
+                            unset($_SESSION['erro_reg']);
+                        }
 
+                        if (isset($_SESSION['sucesso_reg'])) {
+                            echo "<div class='sucesso'><p>{$_SESSION['sucesso_reg']}</p></div>";
+                            unset($_SESSION['sucesso_reg']);
+                        }
+                        ?>
                         <div class="caixa-input">
                             <i class="bi bi-person"></i>
-                            <input type="text" placeholder="Nome de Usuário">
+                            <input type="text" placeholder="Nome de Usuário" name="nome_reg" required>
                         </div>
 
                         <div class="caixa-input">
                             <i class="bi bi-envelope"></i>
-                            <input type="email" placeholder="E-mail">
+                            <input type="email" placeholder="E-mail" name="email_reg" required>
                         </div>
 
                         <div class="caixa-input">
                             <i class="bi bi-lock"></i>
-                            <input type="password" placeholder="Senha">
+                            <input type="password" placeholder="******" name="senha_reg" minlength=6 required>
+                        </div>
+                        <div class="caixa-input">
+                            <i class="bi bi-gender-ambiguous"></i>
+                            <input type="radio" name="genero_reg" value="M"><span><i class="bi bi-gender-male"></i></span>
+                            <input type="radio" name="genero_reg" value="F"><span><i class="bi bi-gender-female"></i></span>
                         </div>
 
                         <button class="modal-btn">Cadastrar</button>

@@ -103,6 +103,18 @@ html[data-tema='claro'] {
     font-size: 20px;
 }
 
+.caixa-input input[type='radio']{
+    width: 3%;
+    accent-color: var(--corDestaque);
+    &:focus{
+        box-shadow: none;
+    }
+}
+
+.caixa-input span{
+    color: var(--corTxt);
+}
+
 .caixa-input input,
 select {
     width: 80%;
