@@ -17,7 +17,9 @@ $genero_usuario = $_SESSION['genero_usuario'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DownSide</title>
+    <title>Vioxel</title>
+
+    <link rel="shortcut icon" href="assets/imgs/logo.png" type="image/x-icon">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -28,8 +30,8 @@ $genero_usuario = $_SESSION['genero_usuario'];
     <?php include 'php/componentes/nav.php'; ?>
     <main class="container-principal">
         <section class="sec-header">
-            <div class="sec-header-avatar">
-                <p><?php echo strtoupper(substr($nome_usuario, 0, 1)) ?></p>
+            <div class="sec-header-infos">
+                <h3><?php date_default_timezone_set('America/Sao_Paulo'); echo date("d/m/Y") ?></h3>
             </div>
             <header class="sec-header-header">
                 <h2>Olá, <?php echo htmlspecialchars($nome_usuario) ?>!</h2>
@@ -41,6 +43,9 @@ $genero_usuario = $_SESSION['genero_usuario'];
                             }
                             ?> A nossa plataforma.</h4>
             </header>
+            <div class="sec-header-avatar">
+                <p><?php echo strtoupper(substr($nome_usuario, 0, 1)) ?></p>
+            </div>
         </section>
         <header>
             <h2>Resumo</h2>

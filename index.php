@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DownSide</title>
+    <title>Vioxel</title>
+
+    <link rel="shortcut icon" href="assets/imgs/logo.png" type="image/x-icon">
 
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -27,7 +29,7 @@
                 if (isset($_SESSION['sucesso'])) {
                     echo "<div class='sucesso'><p>{$_SESSION['sucesso']}</p></div>";
                     unset($_SESSION['sucesso']);
-                    echo "<script>setTimeout(()=>{ window.location.href='dashboard.php'; }, 300);</script>";
+                    echo "<script>setTimeout(()=>{ window.location.href='dashboard.php'; }, 200);</script>";
                 }
                 ?>
                 <div class="caixa-input">

@@ -58,10 +58,13 @@ html[data-tema='claro'] {
   gap: 50px;
 }
 
+.sec-header-infos{
+  margin-right: auto;
+}
+
 .sec-header {
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row-reverse;
+  justify-content: space-between;
   text-align: right;
   gap: 15px;
   padding-bottom: 15px;
@@ -88,7 +91,16 @@ html[data-tema='claro'] {
   font-size: 25px;
   font-weight: bold;
   animation: avatar infinite 5s ease-in-out;
+  &:hover{
+    background: linear-gradient(90deg, var(--corFundo2)0%,var(--corFundo2)100%);
+    color: var(--corTxt);
+  }
+  /* rotate: 45deg; */
 }
+
+/* .sec-header p{
+  rotate: -45deg;
+} */
 
 @keyframes avatar {
   0% {
